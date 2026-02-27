@@ -1,0 +1,404 @@
+body {
+    background-image: url("https://wallpapers.com/images/featured/movie-9pvmdtvz4cb0xl37.jpg");
+    background-size: 75vh;
+    background-attachment: fixed; 
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+.nav {
+    list-style: none; 
+    padding: 10px 20px; 
+    margin: 0;
+    background: rgba(0, 0, 0, 0.5); 
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    color: white;
+    font-family: sans-serif;
+    
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+
+    /* Positioning and Width Matching */
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    position: sticky;
+    top: 20px;
+    z-index: 1000;
+}
+
+.nav a {
+    color: rgb(208, 226, 235);           
+    text-decoration: none;  
+    font-weight: bold;      
+}
+
+.nav a:hover {
+    color: #157195;         
+    opacity: 0.8;           
+}
+
+#logo {
+    display: flex;
+    margin: 0 auto;
+    width: 300px;
+    height: 300px;
+    margin-top: -60px;
+    object-fit: contain;
+}
+
+/* =========================================
+   2. HOME PAGE STYLES (PRESERVED)
+   ========================================= */
+#searchbar {
+    padding-left: 60px;
+    display: flex;
+    margin: 0 auto;
+    margin-top: -30px;
+    padding-top: 10px;
+}
+
+#search {
+    text-align: center;
+    color: white;
+    font-family: "Nabla", system-ui;
+    font-size: 3rem;
+    text-shadow: 2px 2px 5px black;
+    margin-top: -1px;
+}
+
+.nabla-homepage-headline {
+  font-family: "Nabla", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "EDPT" 100, "EHLT" 12;
+}
+
+#myb {
+    display: flex;
+    margin: 0 auto;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 2vh;
+    padding: 1vh 1vh;
+}
+
+#gallery {
+    display: flex;
+    flex-wrap: wrap;       
+    justify-content: center; 
+    gap: 0;                
+    padding: 0;  
+}
+
+#gallery img {
+    width: 150px;
+    height: auto;
+    padding: 1vh 1vh 1vh 1vh;
+}
+
+#myp {
+   text-align: center;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 3rem;
+    text-shadow: 2px 2px 5px black; 
+    background-color: aliceblue;
+}
+
+.poster-img {
+    cursor: pointer;
+}
+
+.poster-img:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+.movie-card {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15); 
+    margin: 15px;  
+    border-radius: 15px; 
+    width: 200px;        
+    padding: 15px;       
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, background 0.3s ease;
+    flex: 0 0 auto; 
+}
+
+.movie-card:hover {
+    transform: translateY(-5px);
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.movie-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.movie-card .movie-title {
+    color: white;
+    font-size: 1rem;
+    margin: 0;
+    text-shadow: none; 
+    font-family: sans-serif;
+}
+
+/* =========================================
+   3. RESULTS PAGE STYLES (UPDATED)
+   ========================================= */
+
+/* The Main Glass Container */
+#info {
+    /* Matches Nav Bar opacity (0.5) */
+    background: rgba(0, 0, 0, 0.5); 
+    
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    
+    /* Matches Nav Bar Width */
+    width: 90%;
+    margin: 50px auto; 
+    padding: 40px;
+    border-radius: 20px;
+    
+    color: white;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+#title {
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    font-family: "Nabla", system-ui;
+    margin-bottom: 20px; /* Reduced from 30px */
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 10px; /* Reduced from 20px */
+}
+
+/* Grid Layout for Poster vs Details */
+#results {
+    display: grid;
+    grid-template-columns: 300px 1fr; 
+    gap: 20px; /* REDUCED GAP (was 40px) */
+    align-items: start;
+    margin-bottom: 30px;
+}
+
+#poster {
+    grid-column: 1;
+    grid-row: 1 / span 10;
+    
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 0; 
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+/* Text Styling in Results - TIGHTER SPACING */
+#results label {
+    grid-column: 2; 
+    font-size: 0.9rem;
+    color: #aaa;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 10px; /* REDUCED MARGIN (was 20px) */
+    display: block;
+    border-bottom: 1px solid #444;
+    width: fit-content;
+    margin-bottom: 2px; /* Tighter against the text below */
+}
+
+#results h3, 
+#results p {
+    grid-column: 2; 
+    margin-top: 0px; /* Removed top margin */
+    line-height: 1.4; /* Slightly tighter line height */
+}
+
+#results h3 {
+    font-size: 1.2rem;
+}
+
+#overview {
+    font-size: 1rem;
+    color: #e0e0e0;
+}
+
+/* Cast Section Grid */
+#Cast {
+    border-top: 1px solid rgba(255,255,255,0.2);
+    padding-top: 20px;
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* 3 Equal Columns */
+    gap: 20px;
+    text-align: center;
+}
+
+#Cast label {
+    grid-column: 1 / span 3; 
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    display: block;
+    text-align: left;
+    color: #ffd700;
+}
+
+/* Explicitly place cast elements */
+#actor1 { grid-column: 1; grid-row: 2; }
+#actor2 { grid-column: 2; grid-row: 2; }
+#actor3 { grid-column: 3; grid-row: 2; }
+
+#actors1 { grid-column: 1; grid-row: 3; }
+#actors2 { grid-column: 2; grid-row: 3; }
+#actors3 { grid-column: 3; grid-row: 3; }
+
+#character1 { grid-column: 1; grid-row: 4; }
+#character2 { grid-column: 2; grid-row: 4; }
+#character3 { grid-column: 3; grid-row: 4; }
+
+/* Cast Images - NO CROPPING FIX */
+#Cast img {
+    width: 100%;
+    height: auto; /* CHANGED: Allows full image height */
+    max-height: 400px; /* Optional cap so it doesn't get massive */
+    object-fit: contain; /* CHANGED: Ensures entire image is visible inside the box */
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+    background: rgba(0,0,0,0.3); /* Adds background if image is different aspect ratio */
+}
+
+#Cast img:hover {
+    transform: scale(1.03);
+}
+
+/* Cast Names */
+#Cast h2 {
+    font-size: 1.2rem;
+    margin: 5px 0 0 0;
+    color: white;
+}
+
+#Cast h3 {
+    font-size: 0.9rem;
+    font-weight: normal;
+    font-style: italic;
+    color: #ccc;
+    margin: 0;
+}
+
+/* Mobile Responsive Fixes */
+@media (max-width: 768px) {
+    .nav, #info {
+        width: 95%;
+    }
+
+    #results {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    #poster {
+        grid-column: 1;
+        width: 200px;
+        margin: 0 auto 20px auto;
+    }
+
+    #results label, #results h3, #results p {
+        grid-column: 1;
+        text-align: left;
+    }
+
+    #Cast {
+        grid-template-columns: 1fr;
+    }
+    
+    #Cast label { grid-column: 1; }
+    
+    #actor1, #actors1, #character1,
+    #actor2, #actors2, #character2,
+    #actor3, #actors3, #character3 {
+        grid-column: 1; 
+        grid-row: auto;
+    }
+   
+}
+
+/* Container for the whole section */
+.ott-section {
+    margin-top: 2rem;
+    text-align: center;
+    border-top: 1px solid #333; /* subtle separator line */
+    padding-top: 1rem;
+}
+
+.ott-section h3 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+/* The box that holds all the logos */
+#ott-container {
+    display: flex;
+    justify-content: center; /* Centers items horizontally */
+    flex-wrap: wrap;         /* Allows items to wrap to next line if needed */
+    gap: 20px;               /* Space between logos */
+    margin-top: 15px;
+}
+
+/* Individual Provider Item (Logo + Name) */
+.provider-item {
+    display: flex;
+    flex-direction: column; /* Stacks logo on top of text */
+    align-items: center;    /* Centers text relative to image */
+    width: 80px;            /* Fixed width ensures consistent spacing */
+}
+
+/* The Logo Image */
+.ott-logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    transition: transform 0.2s ease;
+}
+
+.ott-logo:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+/* The Provider Name Text */
+.provider-name {
+    font-size: 0.75rem;
+    margin-top: 8px;
+    color: #ccc;
+    text-align: center;
+}
+
+/* Helper for "Based on availability" text */
+.disclaimer {
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 15px;
+    font-style: italic;
+}
