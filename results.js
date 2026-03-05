@@ -46,20 +46,44 @@ function loadWatchProviders(movieId) {
             const container = document.getElementById('ott-container');
             container.innerHTML = "";
 
-            
-            const india = data.results.IN || {};
-
+            // Safely get India data
+            const india = data.results?.IN || {};
             const list = india.flatrate || india.rent || [];
+
+            // Helper function to build the search link
+            const getDirectLink = (providerName, movieTitle) => {
+                const safeTitle = encodeURIComponent(movieTitle); 
+                
+                if (providerName.includes("Netflix")) {
+                    return `https://www.netflix.com/search?q=${safeTitle}`;
+                } else if (providerName.includes("Amazon Prime") || providerName.includes("Prime Video")) {
+                    return `https://www.primevideo.com/search/?phrase=${safeTitle}`;
+                } else if (providerName.includes("Hotstar") || providerName.includes("Disney")) {
+                    return `https://www.hotstar.com/in/explore?search_query=${safeTitle}`;
+                } else if (providerName.includes("Apple TV")) {
+                    return `https://tv.apple.com/search?term=${safeTitle}`;
+                } else if (providerName.includes("JioCinema")) {
+                    return `https://www.jiocinema.com/search?q=${safeTitle}`;
+                } else {
+                    return `https://www.google.com/search?q=Watch+${safeTitle}+on+${encodeURIComponent(providerName)}`;
+                }
+            };
 
             if (list.length === 0) {
                 container.innerHTML = "<p>❌ Not currently streaming.</p>";
             } else {
                 list.forEach(p => {
+                    // Generate the link by calling the function
+                    const customLink = getDirectLink(p.provider_name, movieTitle);
+
+                    // Output the HTML
                     container.innerHTML += `
-                        <div class="provider-item">
-                            <img src="${IMG_URL + p.logo_path}" class="ott-logo">
-                            <span class="provider-name">${p.provider_name}</span>
-                        </div>`;
+                        <a href="${customLink}" target="_blank" style="text-decoration: none; color: inherit;">
+                            <div class="provider-item">
+                                <img src="${IMG_URL + p.logo_path}" class="ott-logo">
+                                <span class="provider-name">${p.provider_name}</span>
+                            </div>
+                        </a>`;
                 });
             }
         })
@@ -69,4 +93,3 @@ function loadWatchProviders(movieId) {
 displayMovieInfo();
 displayActorInfo();
 loadWatchProviders(movieId);
-
